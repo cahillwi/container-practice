@@ -1,6 +1,8 @@
-const Post = require("../models/postModel");
+import express from "express";
+import { Post } from '../models/postModel';
+//const Post = require("../models/postModel");
 
-exports.getAllPosts = async (req, res, next) => {
+exports.getAllPosts = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try{
         const posts = await Post.find();
 
@@ -18,7 +20,7 @@ exports.getAllPosts = async (req, res, next) => {
     }
 };
 
-exports.getOnePost = async (req, res, next) => {
+exports.getOnePost = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try{
         const post = await Post.findById(req.params.id);
 
@@ -35,7 +37,7 @@ exports.getOnePost = async (req, res, next) => {
     }
 };
 
-exports.createPost = async (req, res, next) => {
+exports.createPost = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try{
         const post = await Post.create(req.body);
 
@@ -53,7 +55,7 @@ exports.createPost = async (req, res, next) => {
     }
 };
 
-exports.updatePost = async (req, res, next) => {
+exports.updatePost = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try{
         const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
@@ -73,7 +75,7 @@ exports.updatePost = async (req, res, next) => {
     }
 };
 
-exports.deletePost = async (req, res, next) => {
+exports.deletePost = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try{
         const posts = await Post.findByIdAndDelete(req.params.id);
 
