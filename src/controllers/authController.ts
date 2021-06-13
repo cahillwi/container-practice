@@ -1,5 +1,5 @@
 import express from "express";
-import * as User from "../models/userModel";
+import { User } from "../models/userModel";
 //const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 
