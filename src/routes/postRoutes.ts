@@ -1,4 +1,5 @@
-const express = require("express");
+import express from "express";
+//const express = require("express");
 const postController = require("../controllers/postController");
 const protect = require("../middleware/authMiddleware");
 

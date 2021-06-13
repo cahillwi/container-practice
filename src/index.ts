@@ -1,8 +1,13 @@
-const express = require('express');
-const mongoose = require("mongoose");
-const session = require("express-session");
-const redis = require("redis");
-const cors = require("cors");
+import express from 'express';
+import mongoose from "mongoose";
+import session from "express-session";
+import redis from "redis";
+import cors from "cors";
+
+//const mongoose = require("mongoose");
+//const session = require("express-session");
+//const redis = require("redis");
+//const cors = require("cors");
 let RedisStore = require("connect-redis")(session);
 
 const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT, REDIS_URL, REDIS_PORT, SESSION_SECRET } = require('./config/config');
@@ -25,7 +30,8 @@ mongoose
         useFindAndModify: false
     })
     .then(() => console.log("Successfully connected to DB"))
-    .catch((e) => console.log(e));
+    .catch((e: Error) => console.log(e));
+
 
 
 app.enable("trust proxy");
@@ -43,8 +49,14 @@ app.use(session({
 }));
 app.use(express.json());
 
+// define a route handler for the default home page
+app.get( "/", ( req: any, res ) => {
+    //const user = req.userContext ? req.userContext.userinfo : null;
+    res.render( "/views/index");
+} );
+
 app.get("/api", (req,res) => {
-    res.send("<h2>Hi There!!</h2> ");
+    res.send("<h2>Hi There!</h2> ");
 });
 
 app.use("/api/v1/posts", postRouter);

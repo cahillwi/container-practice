@@ -17,7 +17,7 @@ services:
             - MONGO_PASSWORD=mypassword
             - MONGO_IP=mongo-db
             - SESSION_SECRET=secret
-        command: npm run dev
+        command: npm run dev-server
     mongo-db:
         environment:
             - MONGO_INITDB_ROOT_USERNAME=cahillwi
