@@ -41,11 +41,13 @@ app.use(session({
     secret: SESSION_SECRET,
     cookie: {
         secure: false,
-        resave: false,
-        saveUninitialized: false,
+        //resave: false,
+        //saveUninitialized: false,
         httpOnly: true,
         maxAge: 60000,
-    }
+    },
+    resave: false,
+    saveUninitialized: false
 }));
 app.use(express.json());
 
